@@ -1,0 +1,40 @@
+[System]
+Name='D'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='gy'
+Range=[-120 120]
+NumMFs=2
+MF1='gyn':'trapmf',[-Inf -Inf -100 100]
+MF2='gyp':'trapmf',[-100 100 Inf Inf]
+
+[Input2]
+Name='yd'
+Range=[-120 120]
+NumMFs=2
+MF1='ydn':'trapmf',[-Inf -Inf -100 100]
+MF2='ydp':'trapmf',[-100 100 Inf Inf]
+
+[Output1]
+Name='output1'
+Range=[-120 120]
+NumMFs=3
+MF1='on':'trapmf',[-Inf -Inf -100 0]
+MF2='oz':'trimf',[-100 0 100]
+MF3='op':'trapmf',[0 100 Inf Inf]
+
+[Rules]
+2 2, 2 (1) : 1
+2 1, 3 (1) : 1
+1 2, 1 (1) : 1
+1 1, 2 (1) : 1
